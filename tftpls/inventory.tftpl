@@ -1,0 +1,13 @@
+[masters]
+%{ for content_key, content_value in content }
+%{~ if length(regexall("master", content_key)) > 0 ~}
+${content_value}
+%{ endif ~}
+%{~ endfor ~}
+
+[workers]
+%{ for content_key, content_value in content }
+%{~ if length(regexall("worker", content_key)) > 0 ~}
+${content_value} 
+%{ endif ~}
+%{~ endfor ~}
