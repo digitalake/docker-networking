@@ -1,0 +1,23 @@
+---
+version: "3.8"
+services:
+  front:
+    build: .
+    container_name: front 
+    restart: on-failure
+    networks:
+      - backend
+      - frontend
+  back:
+    build: .
+    container_name: back
+    restart: on-failure 
+    networks:
+      - backend
+      
+networks:
+  backend:
+    driver: bridge
+    internal: true
+  frontend:
+    driver: bridge
